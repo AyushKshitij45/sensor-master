@@ -1,15 +1,12 @@
 package com.example.user.sensor;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
@@ -47,20 +44,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         currentZ=(TextView) findViewById(R.id.currentZ);
         getSupportActionBar().getThemedContext();
 
-        AlertDialog.Builder builder;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            builder = new AlertDialog.Builder(getSupportActionBar().getThemedContext(), android.R.style.Theme_Material_Dialog_Alert);
-        } else {
-            builder = new AlertDialog.Builder(getSupportActionBar().getThemedContext());
-        }
-        builder.setTitle("Alert Dialog")
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                })
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show();
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         if (sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER) != null) {
